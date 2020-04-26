@@ -29,10 +29,10 @@ setup(
     author='Arthur Bayr',
     author_email='arthur.holz.91@gmail.com',
     maintainer='Arthur Bayr',
-    url='https://github.com/flavors/django-graphene-jwt',
+    url='https://github.com/Speedy1991/graphene-django-jwt',
     project_urls=OrderedDict((
-        ('Documentation', 'https://github.com/flavors/django-graphene-jwt'),
-        ('Issues', 'https://github.com/flavors/django-graphene-jwt/issues'),
+        ('Documentation', 'https://github.com/Speedy1991/graphene-django-jwt'),
+        ('Issues', 'https://github.com/Speedy1991/graphene-django-jwt/issues'),
     )),
     packages=find_packages(exclude=['tests*']),
     install_requires=[
