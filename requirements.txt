@@ -1,5 +1,4 @@
-django
-graphene
-graphene-django
-PyJWT
-graphql-core
+django>=2.2
+graphene>=2.0
+graphene-django>=2.1.5
+PyJWT>=1.5.0
