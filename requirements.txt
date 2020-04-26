@@ -1,0 +1,5 @@
+django
+graphene
+graphene-django
+PyJWT
+graphql-core
