@@ -1,0 +1,11 @@
+version: "3.4"
+
+services:
+  graphene-django-jwt_example:
+    container_name: graphene-django-jwt_example
+    build: .
+    command: ./docker-entrypoint.sh
+    environment:
+      - DJANGO_SETTINGS_MODULE=example.settings
+    ports:
+      - 127.0.0.1:8000:8000
