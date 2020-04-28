@@ -73,3 +73,8 @@ query HelloProtected {
   helloProtected
 }
 ```
+
+Patches
+-------
+GraphQl is returning errors in an extra `error` Field, the patch provided in the `patches.py` adds this functionallity.
+It will also add a Trace if the server is in debug mode. 
