@@ -8,11 +8,10 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
 
 from graphene_django.views import GraphQLView
+from graphene_django_jwt.exceptions import GrapheneDjangoJWTBaseException
 from graphql.error import GraphQLError, GraphQLSyntaxError
 from graphql.error import format_error as format_graphql_error
 from graphql.error.located_error import GraphQLLocatedError
-
-from graphene_django_jwt.exceptions import GrapheneDjangoJWTBaseException
 
 logger = logging.getLogger('api.patches')
 
@@ -24,7 +23,7 @@ class BaseException(Exception):
 
 def format_internal_error(error, code=None):
     ret = {
-        'message': str(error) or str(getattr(error, "default_message", "")),
+        'message': str(error) or str(getattr(error, 'default_message', '')),
         'payload': getattr(error, 'payload', None),
         'code': code or getattr(error, 'code', 500),
     }

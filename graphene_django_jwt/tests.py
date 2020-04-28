@@ -1,6 +1,7 @@
 import json
-from django.test import TestCase, Client
+
 from django.contrib.auth import get_user_model
+from django.test import Client, TestCase
 
 from graphene_django_jwt.utils import create_refresh_token, jwt_encode, jwt_payload
 
@@ -10,18 +11,18 @@ UserModel = get_user_model()
 def query_helper(client, query, op_name=None, variables=None):
     body = {'query': query}
     if op_name:
-        body["operation_name"] = op_name
+        body['operation_name'] = op_name
     if variables:
-        body["variables"] = variables
+        body['variables'] = variables
 
-    resp = client.post('/', json.dumps(body), content_type="application/json")
+    resp = client.post('/', json.dumps(body), content_type='application/json')
     return json.loads(resp.content.decode())
 
 
 class ApiTokenTestCase(TestCase):
 
     def get_user(self):
-        return UserModel.objects.create_user(username="test@graphene_django_jwt.com", password="123")
+        return UserModel.objects.create_user(username='test@graphene_django_jwt.com', password='123')
 
     def set_http_auth_header(self):
         return True
@@ -37,7 +38,7 @@ class ApiTokenTestCase(TestCase):
         self.user = user
 
         if self.set_http_auth_header():
-            self._client = Client(HTTP_AUTHORIZATION="Bearer %s" % self.token)
+            self._client = Client(HTTP_AUTHORIZATION='Bearer %s' % self.token)
         else:
             self._client = Client()
 
@@ -50,7 +51,7 @@ class ApiTokenTestCase(TestCase):
             self._client,
             query,
             op_name,
-            variables
+            variables,
         )
 
     def mutate(self, mutation, op_name=None, variables=None):
@@ -69,9 +70,9 @@ class AuthorizedTests(ApiTokenTestCase):
             }
         """)
         expected_result = {
-            "jwtRevokeAllTokens": {
-              "revokedTokens": [self.refresh_token, additional_refresh_token]
-            }
+            'jwtRevokeAllTokens': {
+              'revokedTokens': [self.refresh_token, additional_refresh_token],
+            },
         }
         self.assertResponseNoErrors(resp, expected_result)
 
@@ -85,8 +86,8 @@ class AuthorizedTests(ApiTokenTestCase):
             }
         """)
         self.assertNotIn('errors', resp, 'Response had errors')
-        self.assertIsNotNone(resp['data']["jwtSignIn"]["token"], 'Received token')
-        self.assertIsNotNone(resp['data']["jwtSignIn"]["refreshToken"], 'Received refreshToken')
+        self.assertIsNotNone(resp['data']['jwtSignIn']['token'], 'Received token')
+        self.assertIsNotNone(resp['data']['jwtSignIn']['refreshToken'], 'Received refreshToken')
 
     def test_refresh_token(self):
         pass
@@ -126,15 +127,15 @@ class DecoratorTests(ApiTokenTestCase):
               }
             }
         """)
-        self.assertIsNotNone(resp["errors"])
-        self.assertEqual(resp["errors"][0]["code"], 401)
+        self.assertIsNotNone(resp['errors'])
+        self.assertEqual(resp['errors'][0]['code'], 401)
 
 
 class TestInvalidToken(ApiTokenTestCase):
 
     def setUp(self):
         super(TestInvalidToken, self).setUp()
-        self._client = Client(HTTP_AUTHORIZATION="Bearer %s" % "abc")
+        self._client = Client(HTTP_AUTHORIZATION='Bearer %s' % 'abc')
 
     def test_invalid_token(self):
         resp = self.query("""
@@ -144,5 +145,5 @@ class TestInvalidToken(ApiTokenTestCase):
               }
             }
         """)
-        self.assertIsNotNone(resp["errors"])
-        self.assertEqual(resp["errors"][0]["code"], 401)
+        self.assertIsNotNone(resp['errors'])
+        self.assertEqual(resp['errors'][0]['code'], 401)
