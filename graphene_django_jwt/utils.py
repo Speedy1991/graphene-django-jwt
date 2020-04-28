@@ -80,9 +80,9 @@ def get_user_by_payload(payload):
 
 
 def refresh_has_expired(orig_iat):
-    return timegm(datetime.utcnow().utctimetuple()) > (
-            orig_iat + jwt_settings.GRAPHENE_JWT_REFRESH_EXPIRATION_DELTA.total_seconds()
-    )
+    now = timegm(datetime.utcnow().utctimetuple())
+    expires = (orig_iat + jwt_settings.GRAPHENE_JWT_REFRESH_EXPIRATION_DELTA.total_seconds())
+    return now > expires
 
 
 def create_refresh_token(user):
