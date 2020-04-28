@@ -8,7 +8,7 @@ There are great tools like [django-graphql-jwt](https://github.com/flavors/djang
 Some parts are refactored to get rid of some functionallity which isn't related to a jwt framework (IMO):
 
 E.g.:
-- Field based access
+- Field based token access
 - Missing blacklist
 - To much configuration options
 
@@ -36,6 +36,8 @@ Api: http://127.0.0.1:8000/
 ```
 
 Credentials: admin:admin
+
+You can find more examples in the example directory
 
 
 Install
