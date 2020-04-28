@@ -1,7 +1,7 @@
 from django.core.cache import cache
 from django.utils import timezone
 
-from django_graphene_jwt.settings import jwt_settings
+from graphene_django_jwt.settings import jwt_settings
 
 JWT_BLACKLIST_KEY = f"{jwt_settings.GRAPHENE_JWT_CACHE_PREFIX}'/blacklist/%s"
 

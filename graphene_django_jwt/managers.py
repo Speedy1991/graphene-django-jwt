@@ -4,7 +4,7 @@ from django.db.models import Value as V
 from django.db.models import When
 from django.utils import timezone
 
-from django_graphene_jwt.settings import jwt_settings
+from graphene_django_jwt.settings import jwt_settings
 
 
 class RefreshTokenQuerySet(models.QuerySet):

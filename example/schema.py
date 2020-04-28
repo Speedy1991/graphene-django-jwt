@@ -1,7 +1,7 @@
 import graphene
 
-from django_graphene_jwt.decorators import login_required
-from django_graphene_jwt.schema.mutations import Mutation as JWTMutations
+from graphene_django_jwt.decorators import login_required
+from graphene_django_jwt.schema.mutations import Mutation as JWTMutations
 
 
 class Mutation(JWTMutations):

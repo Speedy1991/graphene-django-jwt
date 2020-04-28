@@ -10,10 +10,10 @@ DEFAULTS = {
     'GRAPHENE_JWT_REFRESH_EXPIRATION_DELTA': timedelta(days=7),
     'GRAPHENE_JWT_AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
     'GRAPHENE_JWT_AUTH_HEADER_PREFIX': 'Bearer',
-    'GRAPHENE_JWT_ENCODE_HANDLER': 'django_graphene_jwt.utils.jwt_encode',
-    'GRAPHENE_JWT_DECODE_HANDLER': 'django_graphene_jwt.utils.jwt_decode',
-    'GRAPHENE_JWT_PAYLOAD_HANDLER': 'django_graphene_jwt.utils.jwt_payload',
-    'GRAPHENE_JWT_BLACKLIST_HANDLER': 'django_graphene_jwt.blacklist.DefaultBlacklistHandler',
+    'GRAPHENE_JWT_ENCODE_HANDLER': 'graphene_django_jwt.utils.jwt_encode',
+    'GRAPHENE_JWT_DECODE_HANDLER': 'graphene_django_jwt.utils.jwt_decode',
+    'GRAPHENE_JWT_PAYLOAD_HANDLER': 'graphene_django_jwt.utils.jwt_payload',
+    'GRAPHENE_JWT_BLACKLIST_HANDLER': 'graphene_django_jwt.blacklist.DefaultBlacklistHandler',
     'GRAPHENE_JWT_CACHE_PREFIX': 'jwt',
 }
 

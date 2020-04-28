@@ -1,8 +1,8 @@
 from django.contrib.auth.models import AnonymousUser
 
-from django_graphene_jwt.blacklist import Blacklist
-from django_graphene_jwt.shortcuts import get_user_by_token
-from django_graphene_jwt.utils import get_credentials, get_payload
+from graphene_django_jwt.blacklist import Blacklist
+from graphene_django_jwt.shortcuts import get_user_by_token
+from graphene_django_jwt.utils import get_credentials, get_payload
 
 
 def _load_user(request):

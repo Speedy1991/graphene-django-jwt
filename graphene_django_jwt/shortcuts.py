@@ -1,5 +1,5 @@
-from django_graphene_jwt.exceptions import JSONRefreshTokenExpired
-from django_graphene_jwt.utils import get_payload, get_user_by_payload, jwt_encode, jwt_payload
+from graphene_django_jwt.exceptions import JSONRefreshTokenExpired
+from graphene_django_jwt.utils import get_payload, get_user_by_payload, jwt_encode, jwt_payload
 
 
 def get_token(user, **extra):

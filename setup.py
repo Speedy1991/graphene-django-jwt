@@ -22,7 +22,7 @@ def get_version(package):
 
 setup(
     name='django-graphene-jwt',
-    version=get_version('django_graphene_jwt'),
+    version=get_version('graphene_django_jwt'),
     license='MIT',
     description='JSON Web Token for Django GraphQL',
     long_description='\n\n'.join(get_long_description()),
@@ -60,7 +60,7 @@ setup(
     ],
     zip_safe=False,
     package_data={
-        'django_graphene_jwt': [
+        'graphene_django_jwt': [
             'locale/*/LC_MESSAGES/django.po',
             'locale/*/LC_MESSAGES/django.mo',
         ],

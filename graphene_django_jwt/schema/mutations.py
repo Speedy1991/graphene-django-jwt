@@ -7,13 +7,13 @@ from django.db import transaction
 import graphene
 from graphene.types.generic import GenericScalar
 
-from django_graphene_jwt import signals
-from django_graphene_jwt.blacklist import Blacklist
-from django_graphene_jwt.decorators import login_required
-from django_graphene_jwt.exceptions import JSONRefreshTokenExpired, JSONWebTokenExpired, PermissionDenied
-from django_graphene_jwt.models import RefreshToken
-from django_graphene_jwt.shortcuts import get_refresh_token, get_token
-from django_graphene_jwt.utils import create_refresh_token, get_payload, jwt_encode, jwt_payload
+from graphene_django_jwt import signals
+from graphene_django_jwt.blacklist import Blacklist
+from graphene_django_jwt.decorators import login_required
+from graphene_django_jwt.exceptions import JSONRefreshTokenExpired, JSONWebTokenExpired, PermissionDenied
+from graphene_django_jwt.models import RefreshToken
+from graphene_django_jwt.shortcuts import get_refresh_token, get_token
+from graphene_django_jwt.utils import create_refresh_token, get_payload, jwt_encode, jwt_payload
 
 UserModel = get_user_model()
 

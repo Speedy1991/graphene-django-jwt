@@ -7,9 +7,9 @@ from django.db import models
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 
-from django_graphene_jwt import managers, signals
-from django_graphene_jwt.blacklist import Blacklist
-from django_graphene_jwt.utils import refresh_has_expired
+from graphene_django_jwt import managers, signals
+from graphene_django_jwt.blacklist import Blacklist
+from graphene_django_jwt.utils import refresh_has_expired
 
 UserModel = get_user_model()
 

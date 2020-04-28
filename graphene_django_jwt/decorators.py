@@ -2,7 +2,7 @@ from functools import wraps
 
 from graphql.execution.base import ResolveInfo
 
-from django_graphene_jwt.exceptions import PermissionDenied
+from graphene_django_jwt.exceptions import PermissionDenied
 
 
 def context(f):

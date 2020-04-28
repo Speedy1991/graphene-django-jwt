@@ -1,7 +1,7 @@
 from django.core.management.base import BaseCommand
 from django.template.defaultfilters import pluralize
 
-from django_graphene_jwt.models import RefreshToken
+from graphene_django_jwt.models import RefreshToken
 
 
 class Command(BaseCommand):

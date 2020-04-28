@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'graphene_django',
-    'django_graphene_jwt',
+    'graphene_django_jwt',
 ]
 
 MIDDLEWARE = [
@@ -55,7 +55,7 @@ GRAPHENE = {
     'SCHEMA': 'example.schema.schema',
     'SCHEMA_INDENT': 2,
     'MIDDLEWARE': [
-        'django_graphene_jwt.schema.middleware.JSONWebTokenMiddleware',
+        'graphene_django_jwt.schema.middleware.JSONWebTokenMiddleware',
     ],
 }
 
