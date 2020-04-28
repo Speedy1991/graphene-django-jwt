@@ -54,8 +54,8 @@ Add `graphene_django_jwt` to your `INSTALLED_APPS` like this:
 
 You can append the jwt endpoints to your existing `schema.py` like this:
 ```
-from django_graphene_jwt.schema.mutations import Mutation as JWTMutations
-from django_graphene_jwt.decorators import login_required
+from graphene_django_jwt.schema.mutations import Mutation as JWTMutations
+from graphene_django_jwt.decorators import login_required
 
 class Mutation(JWTMutations):
     pass
