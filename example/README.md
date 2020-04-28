@@ -1,7 +1,7 @@
 Example Mutations and Queries
 -----------------------------
 
-You can just import the predefined mutations from `django_graphene_jwt.schema.mutations` and queries `django_graphene_jwt.schema.query`
+You can just import the predefined mutations from `graphene_django_jwt.schema.mutations` and queries `django_graphene_jwt.schema.query`
 
 Register a new user
 ```
