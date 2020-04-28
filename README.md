@@ -97,3 +97,22 @@ You should cleanup your expired tokens periodically, maybe once a day and each s
 You should also build your blacklist on server start with:
 
 `python manage.py buildblacklist`
+
+
+Settings
+--------
+Defaults:
+
+```
+'GRAPHENE_JWT_ALGORITHM': 'HS256',
+'GRAPHENE_JWT_SECRET_KEY': settings.SECRET_KEY,
+'GRAPHENE_JWT_EXPIRATION_DELTA': timedelta(seconds=60 * 5),
+'GRAPHENE_JWT_REFRESH_EXPIRATION_DELTA': timedelta(days=7),
+'GRAPHENE_JWT_AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
+'GRAPHENE_JWT_AUTH_HEADER_PREFIX': 'Bearer',
+'GRAPHENE_JWT_ENCODE_HANDLER': 'graphene_django_jwt.utils.jwt_encode',
+'GRAPHENE_JWT_DECODE_HANDLER': 'graphene_django_jwt.utils.jwt_decode',
+'GRAPHENE_JWT_PAYLOAD_HANDLER': 'graphene_django_jwt.utils.jwt_payload',
+'GRAPHENE_JWT_BLACKLIST_HANDLER': 'graphene_django_jwt.blacklist.DefaultBlacklistHandler',
+'GRAPHENE_JWT_CACHE_PREFIX': 'jwt',
+```
