@@ -1,5 +1,4 @@
 import graphene
-
 from graphene_django_jwt.decorators import login_required
 from graphene_django_jwt.schema.mutations import Mutation as JWTMutations
 

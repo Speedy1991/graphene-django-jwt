@@ -5,7 +5,6 @@ from django.contrib.auth import get_user_model
 from django.utils.translation import ugettext as _
 
 import jwt
-
 from graphene_django_jwt.exceptions import JSONWebTokenError, JSONWebTokenExpired
 from graphene_django_jwt.settings import jwt_settings
 
