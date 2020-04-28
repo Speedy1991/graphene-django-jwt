@@ -12,6 +12,8 @@ from graphql.error import GraphQLError, GraphQLSyntaxError
 from graphql.error import format_error as format_graphql_error
 from graphql.error.located_error import GraphQLLocatedError
 
+from graphene_django_jwt.exceptions import GrapheneDjangoJWTBaseException
+
 logger = logging.getLogger('api.patches')
 
 
@@ -22,7 +24,7 @@ class BaseException(Exception):
 
 def format_internal_error(error, code=None):
     ret = {
-        'message': str(error),
+        'message': str(error) or str(getattr(error, "default_message", "")),
         'payload': getattr(error, 'payload', None),
         'code': code or getattr(error, 'code', 500),
     }
@@ -42,6 +44,8 @@ class PatchedGraphQLView(GraphQLView):
         if isinstance(original_error, GraphQLLocatedError) or isinstance(original_error, GraphQLError):
             if isinstance(error, ValidationError):
                 return format_internal_error(error, code=400)
+            if isinstance(error, GrapheneDjangoJWTBaseException):
+                return format_internal_error(error)
             if settings.DEBUG:
                 return format_internal_error(error)
             else:

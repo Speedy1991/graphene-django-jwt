@@ -1,20 +1,25 @@
 from django.utils.translation import ugettext_lazy as _
 
 
-class JSONWebTokenError(Exception):
-    pass
-
-
-class PermissionDenied(Exception):
+class GrapheneDjangoJWTBaseException(Exception):
     default_message = _('You do not have permission to perform this action')
     code = 401
 
 
-class JSONWebTokenExpired(Exception):
+class JSONWebTokenError(GrapheneDjangoJWTBaseException):
+    pass
+
+
+class PermissionDenied(GrapheneDjangoJWTBaseException):
+    default_message = _('You do not have permission to perform this action')
+    code = 401
+
+
+class JSONWebTokenExpired(GrapheneDjangoJWTBaseException):
     default_message = _('Signature has expired')
     code = 401
 
 
-class JSONRefreshTokenExpired(Exception):
+class JSONRefreshTokenExpired(GrapheneDjangoJWTBaseException):
     default_message = _('Refresh token has expired')
     code = 401

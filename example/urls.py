@@ -5,6 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 from .patches import PatchedGraphQLView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('', csrf_exempt(PatchedGraphQLView.as_view())),
     path('graphiql/', csrf_exempt(PatchedGraphQLView.as_view(graphiql=True))),
+    path('admin/', admin.site.urls),
 ]
