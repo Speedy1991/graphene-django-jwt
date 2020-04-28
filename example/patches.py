@@ -8,10 +8,11 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
 
 from graphene_django.views import GraphQLView
-from graphene_django_jwt.exceptions import GrapheneDjangoJWTBaseException
 from graphql.error import GraphQLError, GraphQLSyntaxError
 from graphql.error import format_error as format_graphql_error
 from graphql.error.located_error import GraphQLLocatedError
+
+from graphene_django_jwt.exceptions import GrapheneDjangoJWTBaseException
 
 logger = logging.getLogger('api.patches')
 

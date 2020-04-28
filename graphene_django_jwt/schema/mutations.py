@@ -6,6 +6,7 @@ from django.db import transaction
 
 import graphene
 from graphene.types.generic import GenericScalar
+
 from graphene_django_jwt import signals
 from graphene_django_jwt.blacklist import Blacklist
 from graphene_django_jwt.decorators import login_required
