@@ -36,7 +36,7 @@ DATABASES = {
 
 GRAPHENE_DJANGO_JWT = {
     'EXPIRATION_DELTA': timedelta(seconds=3),
-    'REFRESH_EXPIRATION_DELTA': timedelta(seconds=10)
+    'REFRESH_EXPIRATION_DELTA': timedelta(seconds=10),
 }
 
 
