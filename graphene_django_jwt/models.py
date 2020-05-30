@@ -70,7 +70,7 @@ class RefreshToken(models.Model):
 
     def rotate(self):
         refresh_token = RefreshToken.objects.create(user=self.user)
-        if jwt_settings.GRAPHENE_JWT_INVALIDATE_REFRESH_TOKEN_ON_REFRESH:
+        if jwt_settings.GRAPHENE_DJANGO_JWT_INVALIDATE_REFRESH_TOKEN_ON_REFRESH:
             Blacklist.set(self)
         signals.refresh_token_rotated.send(
             sender=RefreshToken,

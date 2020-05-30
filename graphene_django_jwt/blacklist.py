@@ -3,7 +3,7 @@ from django.utils import timezone
 
 from graphene_django_jwt.settings import jwt_settings
 
-JWT_BLACKLIST_KEY = f"{jwt_settings.GRAPHENE_JWT_CACHE_PREFIX}'/blacklist/%s"
+JWT_BLACKLIST_KEY = f"{jwt_settings.GRAPHENE_DJANGO_JWT_CACHE_PREFIX}'/blacklist/%s"
 
 
 class DefaultBlacklistHandler:
@@ -12,7 +12,7 @@ class DefaultBlacklistHandler:
     def set(cls, refresh_token_obj):
         key = JWT_BLACKLIST_KEY % refresh_token_obj.token
         expire = timezone.now() - refresh_token_obj.created
-        expire += jwt_settings.GRAPHENE_JWT_REFRESH_EXPIRATION_DELTA
+        expire += jwt_settings.GRAPHENE_DJANGO_JWT_REFRESH_EXPIRATION_DELTA
         # Add 10 seconds - just to be sure
         expire = int(expire.total_seconds()) + 10
         cache.set(key, expire)
@@ -23,4 +23,4 @@ class DefaultBlacklistHandler:
         return cache.get(key, default=False)
 
 
-Blacklist = jwt_settings.GRAPHENE_JWT_BLACKLIST_HANDLER
+Blacklist = jwt_settings.GRAPHENE_DJANGO_JWT_BLACKLIST_HANDLER

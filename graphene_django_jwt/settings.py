@@ -4,25 +4,25 @@ from django.conf import settings
 from django.utils.module_loading import import_string
 
 DEFAULTS = {
-    'GRAPHENE_JWT_ALGORITHM': 'HS256',
-    'GRAPHENE_JWT_SECRET_KEY': settings.SECRET_KEY,
-    'GRAPHENE_JWT_EXPIRATION_DELTA': timedelta(seconds=60 * 5),
-    'GRAPHENE_JWT_REFRESH_EXPIRATION_DELTA': timedelta(days=7),
-    'GRAPHENE_JWT_AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
-    'GRAPHENE_JWT_AUTH_HEADER_PREFIX': 'Bearer',
-    'GRAPHENE_JWT_CACHE_PREFIX': 'jwt',
-    'GRAPHENE_JWT_INVALIDATE_REFRESH_TOKEN_ON_REFRESH': False,
-    'GRAPHENE_JWT_ENCODE_HANDLER': 'graphene_django_jwt.utils.jwt_encode',
-    'GRAPHENE_JWT_DECODE_HANDLER': 'graphene_django_jwt.utils.jwt_decode',
-    'GRAPHENE_JWT_PAYLOAD_HANDLER': 'graphene_django_jwt.utils.jwt_payload',
-    'GRAPHENE_JWT_BLACKLIST_HANDLER': 'graphene_django_jwt.blacklist.DefaultBlacklistHandler',
+    'GRAPHENE_DJANGO_JWT_ALGORITHM': 'HS256',
+    'GRAPHENE_DJANGO_JWT_SECRET_KEY': settings.SECRET_KEY,
+    'GRAPHENE_DJANGO_JWT_EXPIRATION_DELTA': timedelta(seconds=60 * 5),
+    'GRAPHENE_DJANGO_JWT_REFRESH_EXPIRATION_DELTA': timedelta(days=7),
+    'GRAPHENE_DJANGO_JWT_AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
+    'GRAPHENE_DJANGO_JWT_AUTH_HEADER_PREFIX': 'Bearer',
+    'GRAPHENE_DJANGO_JWT_CACHE_PREFIX': 'jwt',
+    'GRAPHENE_DJANGO_JWT_INVALIDATE_REFRESH_TOKEN_ON_REFRESH': False,
+    'GRAPHENE_DJANGO_JWT_ENCODE_HANDLER': 'graphene_django_jwt.utils.jwt_encode',
+    'GRAPHENE_DJANGO_JWT_DECODE_HANDLER': 'graphene_django_jwt.utils.jwt_decode',
+    'GRAPHENE_DJANGO_JWT_PAYLOAD_HANDLER': 'graphene_django_jwt.utils.jwt_payload',
+    'GRAPHENE_DJANGO_JWT_BLACKLIST_HANDLER': 'graphene_django_jwt.blacklist.DefaultBlacklistHandler',
 }
 
 IMPORT_STRINGS = (
-    'GRAPHENE_JWT_ENCODE_HANDLER',
-    'GRAPHENE_JWT_DECODE_HANDLER',
-    'GRAPHENE_JWT_PAYLOAD_HANDLER',
-    'GRAPHENE_JWT_BLACKLIST_HANDLER',
+    'GRAPHENE_DJANGO_JWT_ENCODE_HANDLER',
+    'GRAPHENE_DJANGO_JWT_DECODE_HANDLER',
+    'GRAPHENE_DJANGO_JWT_PAYLOAD_HANDLER',
+    'GRAPHENE_DJANGO_JWT_BLACKLIST_HANDLER',
 )
 
 
@@ -66,7 +66,8 @@ class GrapheneJWTSettings:
     @property
     def user_settings(self):
         if not hasattr(self, '_user_settings'):
-            self._user_settings = getattr(settings, 'GRAPHQL_JWT', {})
+            _user_settings = getattr(settings, 'GRAPHENE_DJANGO_JWT', {})
+            self._user_settings = {f"GRAPHENE_DJANGO_JWT_{k}": v for k, v in _user_settings.items()}
         return self._user_settings
 
     def reload(self):
@@ -80,3 +81,4 @@ class GrapheneJWTSettings:
 
 
 jwt_settings = GrapheneJWTSettings(DEFAULTS, IMPORT_STRINGS)
+print(jwt_settings)

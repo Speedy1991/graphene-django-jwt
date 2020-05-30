@@ -5,8 +5,6 @@ from django.test import Client, TestCase
 
 from graphene_django_jwt.utils import create_refresh_token, jwt_encode, jwt_payload
 
-UserModel = get_user_model()
-
 
 def query_helper(client, query, op_name=None, variables=None):
     body = {'query': query}
@@ -22,7 +20,7 @@ def query_helper(client, query, op_name=None, variables=None):
 class ApiTokenTestCase(TestCase):
 
     def get_user(self):
-        return UserModel.objects.create_user(username='test@graphene_django_jwt.com', password='123')
+        return get_user_model().objects.create_user(username='test@graphene_django_jwt.com', password='123')
 
     def set_http_auth_header(self):
         return True

@@ -9,7 +9,7 @@ from graphene_django_jwt.settings import jwt_settings
 
 class RefreshTokenQuerySet(models.QuerySet):
     def expired(self):
-        expires = timezone.now() - jwt_settings.GRAPHENE_JWT_REFRESH_EXPIRATION_DELTA
+        expires = timezone.now() - jwt_settings.GRAPHENE_DJANGO_JWT_REFRESH_EXPIRATION_DELTA
         return self.annotate(
             expired=Case(
                 When(created__lt=expires, then=V(True)),
