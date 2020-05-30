@@ -6,5 +6,5 @@ from graphene_django_jwt.blacklist import Blacklist
 class AuthorizedTests(ApiTokenTestCase):
 
     def test_blacklist(self):
-        Blacklist.set(self.refresh_token)
-        self.assertTrue(Blacklist.is_blacklisted(self.refresh_token))
+        Blacklist.set(self.refresh_token_obj)
+        self.assertTrue(Blacklist.is_blacklisted(self.refresh_token_obj))

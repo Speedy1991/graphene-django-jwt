@@ -9,6 +9,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from graphene_django_jwt import managers, signals
 from graphene_django_jwt.blacklist import Blacklist
+from graphene_django_jwt.settings import jwt_settings
 from graphene_django_jwt.utils import refresh_has_expired
 
 UserModel = get_user_model()
@@ -69,10 +70,12 @@ class RefreshToken(models.Model):
 
     def rotate(self):
         refresh_token = RefreshToken.objects.create(user=self.user)
-        # TODO: revoke old one?
+        if jwt_settings.GRAPHENE_JWT_INVALIDATE_REFRESH_TOKEN_ON_REFRESH:
+            Blacklist.set(self)
         signals.refresh_token_rotated.send(
             sender=RefreshToken,
             refresh_token=self,
+            new_refresh_token=refresh_token,
         )
 
         return refresh_token

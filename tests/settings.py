@@ -1,3 +1,5 @@
+from datetime import timedelta
+
 SECRET_KEY = 'test'
 DEBUG = True
 ALLOWED_HOSTS = []
@@ -25,3 +27,6 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
     },
 }
+
+GRAPHENE_JWT_EXPIRATION_DELTA = timedelta(seconds=3)
+GRAPHENE_JWT_REFRESH_EXPIRATION_DELTA = timedelta(seconds=10)

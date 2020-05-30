@@ -29,7 +29,8 @@ class ApiTokenTestCase(TestCase):
 
     def setUp(self):
         user = self.get_user()
-        refresh_token = create_refresh_token(user).get_token()
+        self.refresh_token_obj = create_refresh_token(user)
+        refresh_token = self.refresh_token_obj.get_token()
         payload = jwt_payload(user, refresh_token=refresh_token)
         token = jwt_encode(payload)
 
