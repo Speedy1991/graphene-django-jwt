@@ -16,7 +16,7 @@ class AuthorizedTests(ApiTokenTestCase):
         """)
         expected_result = {
             'jwtRevokeAllTokens': {
-              'revokedTokens': [self.refresh_token, additional_refresh_token],
+                'revokedTokens': [self.refresh_token, additional_refresh_token],
             },
         }
         self.assertResponseNoErrors(resp, expected_result)
