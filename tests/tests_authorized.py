@@ -1,4 +1,5 @@
 from tests import ApiTokenTestCase
+
 from graphene_django_jwt.utils import create_refresh_token
 
 

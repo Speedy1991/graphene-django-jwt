@@ -1,9 +1,9 @@
 import json
+
 from django.contrib.auth import get_user_model
 from django.test import Client, TestCase
 
 from graphene_django_jwt.utils import create_refresh_token, jwt_encode, jwt_payload
-
 
 UserModel = get_user_model()
 

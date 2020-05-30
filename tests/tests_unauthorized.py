@@ -1,5 +1,6 @@
-from tests import ApiTokenTestCase
 from django.test import Client
+
+from tests import ApiTokenTestCase
 
 
 class UnAuthorizedTests(ApiTokenTestCase):
