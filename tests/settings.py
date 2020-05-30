@@ -10,6 +10,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'graphene_django',
     'graphene_django_jwt',
+    'tests',
 ]
 
 GRAPHENE = {

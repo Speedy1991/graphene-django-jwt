@@ -9,6 +9,8 @@ import jwt
 from graphene_django_jwt.exceptions import JSONWebTokenError, JSONWebTokenExpired
 from graphene_django_jwt.settings import jwt_settings
 
+UserModel = get_user_model()
+
 
 def jwt_payload(user, **kwargs):
     payload = {
@@ -67,7 +69,6 @@ def get_payload(token):
 
 
 def get_user_by_payload(payload):
-    UserModel = get_user_model()
     user_id = payload.get('id', None)
     if not user_id:
         raise JSONWebTokenError(_('Invalid JWT Payload'))
