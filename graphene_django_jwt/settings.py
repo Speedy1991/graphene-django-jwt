@@ -67,7 +67,7 @@ class GrapheneJWTSettings:
     def user_settings(self):
         if not hasattr(self, '_user_settings'):
             _user_settings = getattr(settings, 'GRAPHENE_DJANGO_JWT', {})
-            self._user_settings = {f"GRAPHENE_DJANGO_JWT_{k}": v for k, v in _user_settings.items()}
+            self._user_settings = {f'GRAPHENE_DJANGO_JWT_{k}': v for k, v in _user_settings.items()}
         return self._user_settings
 
     def reload(self):
@@ -81,4 +81,3 @@ class GrapheneJWTSettings:
 
 
 jwt_settings = GrapheneJWTSettings(DEFAULTS, IMPORT_STRINGS)
-print(jwt_settings)
